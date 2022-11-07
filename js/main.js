@@ -54,11 +54,11 @@ function generatorPassword(length) {
             arrRandomFunc.push(getRandomNumber());
         }
         if (hasUpperCase) {
-            arrRandomFunc.push(getRandomLowerCase()
+            arrRandomFunc.push(getRandomUpperCase()
             );
         }
         if (hasLowerCase) {
-            arrRandomFunc.push(getRandomUpperCase());
+            arrRandomFunc.push(getRandomLowerCase());
         }
         if (hasSymbols) {
             arrRandomFunc.push(getRandomSymbol());
