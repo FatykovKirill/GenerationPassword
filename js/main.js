@@ -4,18 +4,19 @@ const lowerCase = document.querySelector('#lowerCase');
 const symbols = document.querySelector('#symbols');
 const lengthPassword = document.querySelector('#lengthPassword');
 const btnGenerator = document.querySelector('button');
-const result = document.querySelector('#result')
+const result = document.querySelector('#result');
+const symbolContent = document.querySelector('.special_symbols');
+const specialSymbols = '!@#$%^&*(){}[]=<>/,.';
+
+symbolContent.textContent = specialSymbols;
 
 btnGenerator.addEventListener('click', () => {
 
     const length = +lengthPassword.value;
 
-    if (length == '') {
-        return '';
-    };
-    if (length > 100) {
+    if (length == '' || length > 100 || length < 0 || isNaN(length)) {
         return result.textContent = 'Enter from 1 to 100';
-    }
+    };
 
     result.textContent = generatorPassword(length);
 
@@ -33,11 +34,11 @@ function generatorPassword(length) {
         arrRandomFunc.push(getRandomNumber());
     }
     if (hasUpperCase) {
-        arrRandomFunc.push(getRandomLowerCase()
+        arrRandomFunc.push(getRandomUpperCase()
         );
     }
     if (hasLowerCase) {
-        arrRandomFunc.push(getRandomUpperCase());
+        arrRandomFunc.push(getRandomLowerCase());
     }
     if (hasSymbols) {
         arrRandomFunc.push(getRandomSymbol());
@@ -81,19 +82,9 @@ function getRandomLowerCase() {
 }
 
 function getRandomSymbol() {
-    const specialSymbols = '!"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~';
     return specialSymbols[Math.floor(Math.random() * specialSymbols.length)];
 }
 
-
-
-// function checkInput(obj) {
-//     for (let key in obj) {
-
-//         console.log(obj.key)
-//         // if (obj.key[0]) {
-//         // }
-//         // console.log(obj.key[1]);
-//     }
-//     // return arrRandomFunc;
-// }
+function checkInput(){
+    
+}

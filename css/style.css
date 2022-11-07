@@ -2,6 +2,12 @@
     margin: 0;
 }
 
+body {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+}
+
 .container {
     width: 1070px;
     margin: 0 auto;
