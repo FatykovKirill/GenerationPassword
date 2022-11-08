@@ -1,12 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>Generation Password</title>
 </head>
+
 <body>
-    
+    <div class="container">
+        <fieldset>
+            <legend>Generation settings</legend>
+            <input type="checkbox" id="numbers" checked>
+            <label for="numbers">Numbers</label>
+            <br>
+            <input type="checkbox" id="upperCase" checked>
+            <label for="upperCase">Upper case</label>
+            <br>
+            <input type="checkbox" id="lowerCase" checked>
+            <label for="lowerCase">Lower case</label>
+            <br>
+            <input type="checkbox" id="symbols" checked>
+            <label for="symbols">Special symbols <span class="special_symbols"></span> </label>
+            <br>
+            <label>
+                Password length:
+                <input type="text" id='lengthPassword' value="5"></label>
+            -symbols
+        </fieldset>
+        <button>Creat password</button>
+
+        <h2>Password:</h2>
+        <span id="result"></span>
+    </div>
+    <script src="js/main.js"></script>
 </body>
+
 </html>
