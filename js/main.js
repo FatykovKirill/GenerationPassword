@@ -17,55 +17,37 @@ btnGenerator.addEventListener('click', () => {
     if (length == '' || length > 100 || length < 0 || isNaN(length)) {
         return result.textContent = 'Enter from 1 to 100';
     };
-
+    
     result.textContent = generatorPassword(length);
 
 });
 
+
 function generatorPassword(length) {
-    const hasNumbers = numbers.checked;
-    const hasUpperCase = upperCase.checked;
-    const hasLowerCase = lowerCase.checked;
-    const hasSymbols = symbols.checked;
-
-    let arrRandomFunc = [];
-
-    if (hasNumbers) {
-        arrRandomFunc.push(getRandomNumber());
-    }
-    if (hasUpperCase) {
-        arrRandomFunc.push(getRandomUpperCase()
-        );
-    }
-    if (hasLowerCase) {
-        arrRandomFunc.push(getRandomLowerCase());
-    }
-    if (hasSymbols) {
-        arrRandomFunc.push(getRandomSymbol());
-    }
-
-    let password = [];
+    const password = [];
 
     for (let i = 0; i < length; i++) {
-        password.push(arrRandomFunc[Math.floor(Math.random() * arrRandomFunc.length)]);
-        arrRandomFunc = [];
+        const funcs = [
+            numbers.checked ? getRandomNumber() : null,
+            upperCase.checked ? getRandomUpperCase() : null,
+            lowerCase.checked ? getRandomLowerCase() : null,
+            symbols.checked ? getRandomSymbol() : null,
+        ]
 
-        if (hasNumbers) {
-            arrRandomFunc.push(getRandomNumber());
+        const randomItems = [];
+
+        for (const func of funcs) {
+            if (func) {
+                randomItems.push(func);
+            }
         }
-        if (hasUpperCase) {
-            arrRandomFunc.push(getRandomUpperCase()
-            );
-        }
-        if (hasLowerCase) {
-            arrRandomFunc.push(getRandomLowerCase());
-        }
-        if (hasSymbols) {
-            arrRandomFunc.push(getRandomSymbol());
-        }
+
+        password.push(randomItems[Math.floor(Math.random() * randomItems.length)]);
     }
+
     return password.join('');
 }
+
 
 function getRandomNumber() {
     return Math.floor(Math.random() * 10);
@@ -83,8 +65,4 @@ function getRandomLowerCase() {
 
 function getRandomSymbol() {
     return specialSymbols[Math.floor(Math.random() * specialSymbols.length)];
-}
-
-function checkInput(){
-    
 }
